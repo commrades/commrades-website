@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commrades - Information Security Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ff6b47;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid #ff6b47;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #ff6b47;
+            text-shadow: 0 0 20px #ff6b47;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b47;
+            background: rgba(255, 107, 71, 0.1);
+            box-shadow: 0 0 10px rgba(255, 107, 71, 0.3);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 120px 0 60px;
+            margin-bottom: 40px;
+        }
+
+        .terminal-prompt {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #ff6b47;
+            text-shadow: 0 0 20px #ff6b47;
+            text-align: left;
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ff6b47;
+            box-shadow: 
+                inset 0 0 10px rgba(255, 107, 71, 0.1),
+                0 0 20px rgba(255, 107, 71, 0.2);
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            line-height: 1.4;
+            max-width: 600px;
+        }
+
+        .cursor {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .company-title {
+            font-size: 4em;
+            margin-bottom: 15px;
+            text-shadow: 0 0 30px #ff6b47;
+            letter-spacing: 3px;
+        }
+
+        .company-tagline {
+            font-size: 1.4em;
+            color: #cccccc;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: rgba(255, 107, 71, 0.1);
+            color: #ff8566;
+            text-decoration: none;
+            padding: 15px 30px;
+            border: 2px solid #ff6b47;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 107, 71, 0.2);
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 107, 71, 0.2);
+            border-color: #ff8566;
+            box-shadow: 0 8px 30px rgba(255, 107, 71, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 60px;
+            padding: 40px;
+            border: 2px solid #ff6b47;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 
+                inset 0 0 20px rgba(255, 107, 71, 0.1),
+                0 0 20px rgba(255, 107, 71, 0.2);
+        }
+
+        .section-title {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #ff8566;
+            border-bottom: 2px solid #ff6b47;
+            padding-bottom: 15px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px #ff6b47;
+            text-align: center;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #cc3319;
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 107, 71, 0.2);
+        }
+
+        .service-card:hover {
+            border-color: #ff6b47;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 71, 0.4);
+        }
+
+        .service-icon {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(255, 107, 71, 0.5));
+        }
+
+        .service-icon svg {
+            width: 60px;
+            height: 60px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon svg {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 15px rgba(255, 133, 102, 0.8));
+        }
+
+        .service-title {
+            font-size: 1.4em;
+            color: #ff8566;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .service-description {
+            color: #cccccc;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text {
+            color: #cccccc;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat-item {
+            background: rgba(255, 107, 71, 0.1);
+            border: 2px solid #ff6b47;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            color: #ff8566;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            color: #cccccc;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Why Choose Us */
+        .features-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .features-list li {
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            background: rgba(255, 107, 71, 0.05);
+            border-left: 4px solid #ff6b47;
+            border-radius: 8px;
+            color: #cccccc;
+            position: relative;
+        }
+
+        .features-list li:before {
+            content: ">";
+            position: absolute;
+            left: 8px;
+            color: #ff6b47;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .team-member {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #cc3319;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            border-color: #ff6b47;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 71, 0.4);
+        }
+
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #ff6b47, #cc3319);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: white;
+        }
+
+        .member-name {
+            font-size: 1.3em;
+            color: #ff8566;
+            margin-bottom: 10px;
+        }
+
+        .member-role {
+            color: #cc3319;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .member-description {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .contact-info {
+            background: rgba(255, 107, 71, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #ff6b47;
+        }
+
+        .contact-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            color: #cccccc;
+        }
+
+        .contact-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            margin-right: 15px;
+        }
+
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
+            filter: drop-shadow(0 0 5px rgba(255, 133, 102, 0.5));
+        }
+
+        .contact-form {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #cc3319;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #ff8566;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 107, 71, 0.1);
+            border: 1px solid #ff6b47;
+            border-radius: 6px;
+            color: #cccccc;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff8566;
+            box-shadow: 0 0 10px rgba(255, 107, 71, 0.3);
+        }
+
+        .submit-btn {
+            background: rgba(255, 107, 71, 0.1);
+            color: #ff8566;
+            border: 2px solid #ff6b47;
+            padding: 12px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: rgba(255, 107, 71, 0.2);
+            border-color: #ff8566;
+            box-shadow: 0 5px 20px rgba(255, 107, 71, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            border-top: 2px solid #ff6b47;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            color: #cccccc;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #ff8566;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b47;
+        }
+
+        /* Background Effects */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.03;
+            background: 
+                radial-gradient(circle at 20% 80%, #ff6b47 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, #ff4422 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, #ff8566 0%, transparent 50%);
+            animation: plasma-pulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes plasma-pulse {
+            0% { opacity: 0.03; }
+            100% { opacity: 0.08; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .company-title {
+                font-size: 2.5em;
+            }
+            
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-bg" id="matrixBg"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">COMMRADES</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header" id="home">
+            <div class="terminal-prompt">
+                root@commrades:~$ initialize_security_protocol<span class="cursor">_</span>
+            </div>
+            <h1 class="company-title">COMMRADES InfoSec</h1>
+            <p class="company-tagline">Protecting <em style="color: #ff4422; font-style: italic;">your</em> today. Securing <em style="color: #ff4422; font-style: italic;">our</em> tomorrow.</p>
+            <a href="#contact" class="cta-button">Secure Your Infrastructure</a>
+        </header>
+
+        <!-- Services Section -->
+        <section class="section" id="services">
+            <h2 class="section-title">[SECURITY_SERVICES]</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Executive figure with security badge -->
+                            <g>
+                                <!-- Head/Avatar -->
+                                <circle cx="40" cy="25" r="8" fill="none" stroke="#ff6b47" stroke-width="2">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/>
+                                </circle>
+                                
+                                <!-- Body/Shoulders -->
+                                <path d="M28 35 Q40 32 52 35 L52 45 Q40 42 28 45 Z" fill="none" stroke="#ff6b47" stroke-width="2"/>
+                                
+                                <!-- Security badge/ID -->
+                                <rect x="45" y="30" width="8" height="10" rx="1" fill="none" stroke="#ff8566" stroke-width="1.5">
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                                </rect>
+                                <circle cx="49" cy="33" r="1.5" fill="#ff4422"/>
+                                <line x1="46" y1="36" x2="52" y2="36" stroke="#ff8566" stroke-width="0.5"/>
+                                <line x1="46" y1="38" x2="50" y2="38" stroke="#ff8566" stroke-width="0.5"/>
+                            </g>
+                            
+                            <!-- Strategic oversight dashboard -->
+                            <g transform="translate(10, 50)">
+                                <!-- Dashboard frame -->
+                                <rect x="0" y="0" width="60" height="25" rx="2" fill="none" stroke="#ff6b47" stroke-width="1.5"/>
+                                
+                                <!-- Security metrics with animated bars -->
+                                <g stroke="#ff8566" stroke-width="1" fill="#ff8566">
+                                    <!-- Risk Level indicator -->
+                                    <rect x="5" y="5" width="8" height="3" opacity="0.7">
+                                        <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                                    </rect>
+                                    <rect x="5" y="9" width="12" height="3" opacity="0.6">
+                                        <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+                                    </rect>
+                                    <rect x="5" y="13" width="6" height="3" opacity="0.8">
+                                        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+                                    </rect>
+                                    
+                                    <!-- Compliance status -->
+                                    <circle cx="25" cy="8" r="3" fill="none" stroke="#ff4422" stroke-width="1">
+                                        <animate attributeName="r" values="3;4;3" dur="2.5s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <path d="M23 8 L24.5 9.5 L27 6.5" fill="none" stroke="#ff4422" stroke-width="1"/>
+                                    
+                                    <!-- Budget allocation pie -->
+                                    <circle cx="35" cy="8" r="4" fill="none" stroke="#ff8566" stroke-width="1"/>
+                                    <path d="M35 4 A4 4 0 0 1 38 10" fill="none" stroke="#ff4422" stroke-width="2">
+                                        <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+                                    </path>
+                                    
+                                    <!-- Strategic timeline -->
+                                    <line x1="45" y1="6" x2="55" y2="6" stroke="#ff8566" stroke-width="1"/>
+                                    <line x1="45" y1="10" x2="52" y2="10" stroke="#ff8566" stroke-width="1"/>
+                                    <line x1="45" y1="14" x2="58" y2="14" stroke="#ff8566" stroke-width="1"/>
+                                    
+                                    <!-- Progress indicators -->
+                                    <circle cx="47" cy="6" r="1" fill="#ff4422">
+                                        <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <circle cx="49" cy="10" r="1" fill="#ff8566">
+                                        <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" begin="0.5s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <circle cx="51" cy="14" r="1" fill="#ff6b47">
+                                        <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" begin="1s" repeatCount="indefinite"/>
+                                    </circle>
+                                </g>
+                            </g>
+                            
+                            <!-- Strategic connections/reporting lines -->
+                            <g stroke="#ff8566" stroke-width="1" opacity="0.6">
+                                <!-- Connection to board/executives -->
+                                <path d="M40 17 Q30 5 15 8" fill="none">
+                                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite"/>
+                                </path>
+                                <path d="M40 17 Q50 5 65 8" fill="none">
+                                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" begin="1s" repeatCount="indefinite"/>
+                                </path>
+                                
+                                <!-- Executive nodes -->
+                                <circle cx="15" cy="8" r="2" fill="#ff8566" opacity="0.7"/>
+                                <circle cx="65" cy="8" r="2" fill="#ff8566" opacity="0.7"/>
+                                
+                                <!-- Labels -->
+                                <text x="15" y="4" font-size="4" text-anchor="middle" fill="#ff8566" opacity="0.8">CEO</text>
+                                <text x="65" y="4" font-size="4" text-anchor="middle" fill="#ff8566" opacity="0.8">CTO</text>
+                            </g>
+                            
+                            <!-- Security policy shield -->
+                            <g transform="translate(5, 20)">
+                                <path d="M8 5 L12 3 L16 5 L16 12 Q16 15 12 17 Q8 15 8 12 Z" 
+                                      fill="none" stroke="#ff4422" stroke-width="1">
+                                    <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+                                </path>
+                                <text x="12" y="11" font-size="3" text-anchor="middle" fill="#ff4422">P</text>
+                            </g>
+                            
+                            <!-- Governance crown/authority symbol -->
+                            <g transform="translate(40, 10)">
+                                <path d="M-3 0 L-1 -3 L1 0 L3 -3 L5 0 L3 2 L-3 2 Z" 
+                                      fill="#ff4422" stroke="#ff6b47" stroke-width="0.5">
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="4s" repeatCount="indefinite"/>
+                                </path>
+                                <circle cx="0" cy="-1" r="0.5" fill="#ff8566"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Virtual CISO (vCISO)</h3>
+                    <p class="service-description">
+                        Executive-level cybersecurity leadership and strategic guidance without the full-time cost. Our seasoned CISOs provide governance, risk management, and security program oversight.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Central monitoring hub -->
+                            <circle cx="40" cy="40" r="12" fill="none" stroke="#ff6b47" stroke-width="2">
+                                <animate attributeName="r" values="12;14;12" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="40" cy="40" r="6" fill="rgba(255, 107, 71, 0.2)" stroke="#ff8566" stroke-width="1"/>
+                            
+                            <!-- Continuous scanning rings -->
+                            <circle cx="40" cy="40" r="20" fill="none" stroke="#ff8566" stroke-width="1" opacity="0.6">
+                                <animate attributeName="r" values="20;30;20" dur="4s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.6;0.2;0.6" dur="4s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="40" cy="40" r="30" fill="none" stroke="#ff4422" stroke-width="1" opacity="0.4">
+                                <animate attributeName="r" values="30;40;30" dur="5s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.4;0.1;0.4" dur="5s" repeatCount="indefinite"/>
+                            </circle>
+                            
+                            <!-- Threat exposure points with severity indicators -->
+                            <g>
+                                <!-- Critical threat (red, fast pulse) -->
+                                <circle cx="25" cy="20" r="3" fill="#ff4422">
+                                    <animate attributeName="r" values="3;5;3" dur="1s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1s" repeatCount="indefinite"/>
+                                </circle>
+                                
+                                <!-- High threat (orange, medium pulse) -->
+                                <circle cx="60" cy="25" r="2.5" fill="#ff6b47">
+                                    <animate attributeName="r" values="2.5;4;2.5" dur="1.5s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="1.5s" repeatCount="indefinite"/>
+                                </circle>
+                                
+                                <!-- Medium threat (light orange, slow pulse) -->
+                                <circle cx="65" cy="55" r="2" fill="#ff8566">
+                                    <animate attributeName="r" values="2;3.5;2" dur="2s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                
+                                <!-- Low threat (dim, very slow pulse) -->
+                                <circle cx="15" cy="60" r="1.5" fill="#ff8566" opacity="0.7">
+                                    <animate attributeName="r" values="1.5;3;1.5" dur="3s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.5;0.9;0.5" dur="3s" repeatCount="indefinite"/>
+                                </circle>
+                            </g>
+                            
+                            <!-- Exposure assessment lines connecting to center -->
+                            <g stroke="#ff8566" stroke-width="1" opacity="0.6">
+                                <line x1="25" y1="20" x2="35" y2="35">
+                                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+                                </line>
+                                <line x1="60" y1="25" x2="45" y2="35">
+                                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                                </line>
+                                <line x1="65" y1="55" x2="45" y2="45">
+                                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" begin="1s" repeatCount="indefinite"/>
+                                </line>
+                                <line x1="15" y1="60" x2="35" y2="45">
+                                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+                                </line>
+                            </g>
+                            
+                            <!-- Continuous monitoring sweep -->
+                            <defs>
+                                <linearGradient id="ctemSweep" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#ff4422;stop-opacity:0"/>
+                                    <stop offset="50%" style="stop-color:#ff6b47;stop-opacity:0.6"/>
+                                    <stop offset="100%" style="stop-color:#ff8566;stop-opacity:0"/>
+                                </linearGradient>
+                            </defs>
+                            <g>
+                                <animateTransform attributeName="transform" attributeType="XML" 
+                                                type="rotate" from="0 40 40" to="360 40 40" 
+                                                dur="6s" repeatCount="indefinite"/>
+                                <path d="M40 40 L40 15 A25 25 0 0 1 57 27 Z" fill="url(#ctemSweep)"/>
+                            </g>
+                            
+                            <!-- Central CTEM core -->
+                            <circle cx="40" cy="40" r="3" fill="#ff4422">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            
+                            <!-- Threat trend arrows -->
+                            <g stroke="#ff4422" stroke-width="1.5" fill="none">
+                                <!-- Upward trend indicating increasing exposure -->
+                                <path d="M50 15 L55 10 L60 15" opacity="0.7">
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="1.5s" repeatCount="indefinite"/>
+                                </path>
+                                <line x1="55" y1="10" x2="55" y2="15" stroke="#ff4422" stroke-width="1.5" opacity="0.7">
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="1.5s" repeatCount="indefinite"/>
+                                </line>
+                            </g>
+                            
+                            <!-- Vulnerability surface indicators -->
+                            <g opacity="0.4">
+                                <rect x="10" y="10" width="8" height="8" fill="none" stroke="#ff8566" stroke-width="1">
+                                    <animate attributeName="opacity" values="0.4;0.7;0.4" dur="4s" repeatCount="indefinite"/>
+                                </rect>
+                                <rect x="62" y="62" width="8" height="8" fill="none" stroke="#ff8566" stroke-width="1">
+                                    <animate attributeName="opacity" values="0.4;0.7;0.4" dur="4s" begin="2s" repeatCount="indefinite"/>
+                                </rect>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Continuous Threat Exposure Management</h3>
+                    <p class="service-description">
+                        Advanced CTEM framework providing continuous discovery, assessment, and prioritization of threat exposures across your entire attack surface with real-time risk scoring.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Shield outline -->
+                            <path d="M40 5 L65 15 L65 35 Q65 55 40 75 Q15 55 15 35 L15 15 Z" 
+                                  fill="none" 
+                                  stroke="#ff6b47" 
+                                  stroke-width="2"/>
+                            
+                            <!-- Circuit pattern inside shield -->
+                            <g stroke="#ff8566" stroke-width="1.5" fill="none">
+                                <!-- Horizontal lines -->
+                                <line x1="25" y1="25" x2="35" y2="25"/>
+                                <line x1="45" y1="25" x2="55" y2="25"/>
+                                <line x1="30" y1="35" x2="50" y2="35"/>
+                                <line x1="25" y1="45" x2="40" y2="45"/>
+                                <line x1="50" y1="45" x2="55" y2="45"/>
+                                
+                                <!-- Vertical lines -->
+                                <line x1="35" y1="20" x2="35" y2="30"/>
+                                <line x1="45" y1="20" x2="45" y2="30"/>
+                                <line x1="40" y1="30" x2="40" y2="50"/>
+                                <line x1="50" y1="40" x2="50" y2="50"/>
+                                
+                                <!-- Circuit nodes with pulsing animation -->
+                                <circle cx="35" cy="25" r="2" fill="#ff4422">
+                                    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="45" cy="25" r="2" fill="#ff4422">
+                                    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.4s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="40" cy="35" r="2" fill="#ff4422">
+                                    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.8s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="50" cy="45" r="2" fill="#ff4422">
+                                    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="1.2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="40" cy="45" r="2" fill="#ff4422">
+                                    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="1.6s" repeatCount="indefinite"/>
+                                </circle>
+                            </g>
+                            
+                            <!-- Central lock symbol with gentle glow -->
+                            <g fill="#ff6b47">
+                                <rect x="36" y="52" width="8" height="8" rx="1">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/>
+                                </rect>
+                                <path d="M38 52 L38 48 Q38 46 40 46 Q42 46 42 48 L42 52" 
+                                      fill="none" 
+                                      stroke="#ff6b47" 
+                                      stroke-width="1.5">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/>
+                                </path>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Penetration Testing</h3>
+                    <p class="service-description">
+                        Comprehensive security assessments using advanced ethical hacking techniques to identify vulnerabilities before malicious actors do.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Radar base -->
+                            <circle cx="40" cy="40" r="30" fill="none" stroke="#ff6b47" stroke-width="2"/>
+                            <circle cx="40" cy="40" r="20" fill="none" stroke="#ff8566" stroke-width="1"/>
+                            <circle cx="40" cy="40" r="10" fill="none" stroke="#ff8566" stroke-width="1"/>
+                            
+                            <!-- Radar sweep with rotation -->
+                            <defs>
+                                <linearGradient id="sweep" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#ff4422;stop-opacity:0"/>
+                                    <stop offset="100%" style="stop-color:#ff4422;stop-opacity:0.8"/>
+                                </linearGradient>
+                            </defs>
+                            <g>
+                                <animateTransform attributeName="transform" attributeType="XML" 
+                                                type="rotate" from="0 40 40" to="360 40 40" 
+                                                dur="4s" repeatCount="indefinite"/>
+                                <path d="M40 40 L40 10 A30 30 0 0 1 55 20 Z" fill="url(#sweep)"/>
+                            </g>
+                            
+                            <!-- Crosshairs -->
+                            <line x1="40" y1="10" x2="40" y2="70" stroke="#ff8566" stroke-width="1"/>
+                            <line x1="10" y1="40" x2="70" y2="40" stroke="#ff8566" stroke-width="1"/>
+                            
+                            <!-- Threat indicators with blinking -->
+                            <circle cx="30" cy="25" r="2" fill="#ff4422">
+                                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="55" cy="35" r="2" fill="#ff4422">
+                                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="25" cy="55" r="2" fill="#ff4422">
+                                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="50" cy="60" r="2" fill="#ff4422">
+                                <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            
+                            <!-- Center dot -->
+                            <circle cx="40" cy="40" r="2" fill="#ff6b47"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Threat Intelligence</h3>
+                    <p class="service-description">
+                        Real-time threat monitoring and analysis to keep your organization ahead of emerging cyber threats and attack vectors.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Document stack with subtle float -->
+                            <g>
+                                <animateTransform attributeName="transform" attributeType="XML" 
+                                                type="translate" values="0,0; 0,-1; 0,0" 
+                                                dur="3s" repeatCount="indefinite"/>
+                                <rect x="20" y="25" width="35" height="45" rx="2" fill="none" stroke="#ff6b47" stroke-width="2"/>
+                                <rect x="18" y="23" width="35" height="45" rx="2" fill="none" stroke="#ff8566" stroke-width="1.5"/>
+                                <rect x="16" y="21" width="35" height="45" rx="2" fill="none" stroke="#ff8566" stroke-width="1"/>
+                            </g>
+                            
+                            <!-- Compliance checklist with sequential completion -->
+                            <g stroke="#ff8566" stroke-width="1" fill="#ff4422">
+                                <!-- Checkmarks with staggered animation -->
+                                <path d="M24 35 L26 37 L30 33" fill="none" stroke="#ff4422" stroke-width="2">
+                                    <animate attributeName="opacity" values="0;1" dur="0.5s" begin="1s" fill="freeze"/>
+                                </path>
+                                <path d="M24 42 L26 44 L30 40" fill="none" stroke="#ff4422" stroke-width="2">
+                                    <animate attributeName="opacity" values="0;1" dur="0.5s" begin="2s" fill="freeze"/>
+                                </path>
+                                <path d="M24 49 L26 51 L30 47" fill="none" stroke="#ff4422" stroke-width="2">
+                                    <animate attributeName="opacity" values="0;1" dur="0.5s" begin="3s" fill="freeze"/>
+                                </path>
+                                
+                                <!-- Lines representing text -->
+                                <line x1="34" y1="35" x2="48" y2="35" stroke="#ff8566" stroke-width="1"/>
+                                <line x1="34" y1="42" x2="45" y2="42" stroke="#ff8566" stroke-width="1"/>
+                                <line x1="34" y1="49" x2="50" y2="49" stroke="#ff8566" stroke-width="1"/>
+                            </g>
+                            
+                            <!-- Badge/seal with rotation -->
+                            <g>
+                                <animateTransform attributeName="transform" attributeType="XML" 
+                                                type="rotate" values="0 50 15; 5 50 15; 0 50 15; -5 50 15; 0 50 15" 
+                                                dur="4s" repeatCount="indefinite"/>
+                                <circle cx="50" cy="15" r="8" fill="none" stroke="#ff6b47" stroke-width="2"/>
+                                <circle cx="50" cy="15" r="4" fill="none" stroke="#ff4422" stroke-width="1"/>
+                                <circle cx="50" cy="15" r="2" fill="#ff4422"/>
+                            </g>
+                            
+                            <!-- Ribbon -->
+                            <path d="M45 20 L50 25 L55 20 L55 30 L50 27 L45 30 Z" fill="#ff6b47" stroke="#ff6b47">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Compliance & GRC</h3>
+                    <p class="service-description">
+                        Governance, Risk, and Compliance solutions ensuring adherence to industry standards like ISO 27001, NIST, and GDPR.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Alert triangle -->
+                            <path d="M40 10 L65 60 L15 60 Z" fill="none" stroke="#ff6b47" stroke-width="2"/>
+                            
+                            <!-- Lightning bolt inside with flash effect -->
+                            <path d="M35 25 L45 25 L38 40 L48 40 L35 60 L42 40 L32 40 Z" fill="#ff4422" stroke="#ff4422">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="1s" repeatCount="indefinite"/>
+                            </path>
+                            
+                            <!-- Warning indicators around with expanding rings -->
+                            <circle cx="25" cy="25" r="3" fill="none" stroke="#ff8566" stroke-width="1.5">
+                                <animate attributeName="r" values="3;6;3" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="55" cy="25" r="3" fill="none" stroke="#ff8566" stroke-width="1.5">
+                                <animate attributeName="r" values="3;6;3" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="40" cy="15" r="3" fill="none" stroke="#ff8566" stroke-width="1.5">
+                                <animate attributeName="r" values="3;6;3" dur="2s" begin="1s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" begin="1s" repeatCount="indefinite"/>
+                            </circle>
+                            
+                            <!-- Pulse rings -->
+                            <circle cx="40" cy="40" r="25" fill="none" stroke="#ff8566" stroke-width="1" opacity="0.3">
+                                <animate attributeName="r" values="25;40;25" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.4;0;0.4" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="40" cy="40" r="20" fill="none" stroke="#ff4422" stroke-width="1" opacity="0.2">
+                                <animate attributeName="r" values="20;35;20" dur="3s" begin="1s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.3;0;0.3" dur="3s" begin="1s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Incident Response</h3>
+                    <p class="service-description">
+                        24/7 rapid response team ready to contain, investigate, and remediate security incidents with minimal business impact.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Network nodes with gentle pulse -->
+                            <circle cx="25" cy="25" r="6" fill="none" stroke="#ff6b47" stroke-width="2">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="55" cy="25" r="6" fill="none" stroke="#ff6b47" stroke-width="2">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" begin="0.6s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="40" cy="40" r="8" fill="none" stroke="#ff6b47" stroke-width="2">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" begin="1.2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="25" cy="55" r="6" fill="none" stroke="#ff6b47" stroke-width="2">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" begin="1.8s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="55" cy="55" r="6" fill="none" stroke="#ff6b47" stroke-width="2">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" begin="2.4s" repeatCount="indefinite"/>
+                            </circle>
+                            
+                            <!-- Connection lines with data flow -->
+                            <line x1="25" y1="25" x2="40" y2="40" stroke="#ff8566" stroke-width="2"/>
+                            <line x1="55" y1="25" x2="40" y2="40" stroke="#ff8566" stroke-width="2"/>
+                            <line x1="25" y1="55" x2="40" y2="40" stroke="#ff8566" stroke-width="2"/>
+                            <line x1="55" y1="55" x2="40" y2="40" stroke="#ff8566" stroke-width="2"/>
+                            <line x1="25" y1="25" x2="55" y2="25" stroke="#ff8566" stroke-width="1"/>
+                            <line x1="25" y1="55" x2="55" y2="55" stroke="#ff8566" stroke-width="1"/>
+                            
+                            <!-- Security barriers -->
+                            <rect x="20" y="30" width="10" height="20" fill="none" stroke="#ff4422" stroke-width="2"/>
+                            <rect x="50" y="30" width="10" height="20" fill="none" stroke="#ff4422" stroke-width="2"/>
+                            
+                            <!-- Central security core with glow -->
+                            <circle cx="40" cy="40" r="3" fill="#ff4422">
+                                <animate attributeName="r" values="3;4;3" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            
+                            <!-- Data flow indicators with movement -->
+                            <circle cx="25" cy="25" r="1" fill="#ff4422">
+                                <animateMotion dur="2s" repeatCount="indefinite">
+                                    <mpath href="#path1"/>
+                                </animateMotion>
+                                <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="55" cy="25" r="1" fill="#ff4422">
+                                <animateMotion dur="2s" begin="0.5s" repeatCount="indefinite">
+                                    <mpath href="#path2"/>
+                                </animateMotion>
+                                <animate attributeName="opacity" values="1;0.3;1" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="25" cy="55" r="1" fill="#ff4422">
+                                <animateMotion dur="2s" begin="1s" repeatCount="indefinite">
+                                    <mpath href="#path3"/>
+                                </animateMotion>
+                                <animate attributeName="opacity" values="1;0.3;1" dur="2s" begin="1s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="55" cy="55" r="1" fill="#ff4422">
+                                <animateMotion dur="2s" begin="1.5s" repeatCount="indefinite">
+                                    <mpath href="#path4"/>
+                                </animateMotion>
+                                <animate attributeName="opacity" values="1;0.3;1" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+                            </circle>
+                            
+                            <!-- Hidden paths for animation -->
+                            <defs>
+                                <path id="path1" d="M25 25 L40 40"/>
+                                <path id="path2" d="M55 25 L40 40"/>
+                                <path id="path3" d="M25 55 L40 40"/>
+                                <path id="path4" d="M55 55 L40 40"/>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Security Architecture</h3>
+                    <p class="service-description">
+                        Design and implementation of robust security frameworks tailored to your organization's unique infrastructure needs.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Monitor/screen -->
+                            <rect x="15" y="20" width="50" height="35" rx="3" fill="none" stroke="#ff6b47" stroke-width="2"/>
+                            <rect x="17" y="22" width="46" height="31" rx="1" fill="rgba(255, 107, 71, 0.1)"/>
+                            
+                            <!-- Screen content - code/training with typing effect -->
+                            <g stroke="#ff8566" stroke-width="1" fill="none">
+                                <line x1="22" y1="28" x2="35" y2="28">
+                                    <animate attributeName="x2" values="22;35" dur="3s" begin="0s" fill="freeze"/>
+                                </line>
+                                <line x1="22" y1="32" x2="42" y2="32">
+                                    <animate attributeName="x2" values="22;42" dur="3s" begin="0.5s" fill="freeze"/>
+                                </line>
+                                <line x1="22" y1="36" x2="38" y2="36">
+                                    <animate attributeName="x2" values="22;38" dur="3s" begin="1s" fill="freeze"/>
+                                </line>
+                                <line x1="22" y1="40" x2="45" y2="40">
+                                    <animate attributeName="x2" values="22;45" dur="3s" begin="1.5s" fill="freeze"/>
+                                </line>
+                                <line x1="22" y1="44" x2="33" y2="44">
+                                    <animate attributeName="x2" values="22;33" dur="3s" begin="2s" fill="freeze"/>
+                                </line>
+                                <line x1="22" y1="48" x2="40" y2="48">
+                                    <animate attributeName="x2" values="22;40" dur="3s" begin="2.5s" fill="freeze"/>
+                                </line>
+                            </g>
+                            
+                            <!-- Cursor/pointer with blinking -->
+                            <polygon points="46,35 50,35 48,39" fill="#ff4422">
+                                <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+                            </polygon>
+                            
+                            <!-- Monitor stand -->
+                            <rect x="35" y="55" width="10" height="8" fill="none" stroke="#ff6b47" stroke-width="2"/>
+                            <line x1="25" y1="63" x2="55" y2="63" stroke="#ff6b47" stroke-width="2"/>
+                            
+                            <!-- Learning/brain icon on screen with pulse -->
+                            <circle cx="52" cy="35" r="8" fill="none" stroke="#ff4422" stroke-width="1.5">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <path d="M48 32 Q52 28 56 32 Q56 35 54 37 Q52 39 50 37 Q48 35 48 32" 
+                                  fill="none" stroke="#ff4422" stroke-width="1">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                            </path>
+                            
+                            <!-- Knowledge transfer arrows with movement -->
+                            <g>
+                                <animateTransform attributeName="transform" attributeType="XML" 
+                                                type="translate" values="0,0; 2,0; 0,0" 
+                                                dur="2s" repeatCount="indefinite"/>
+                                <path d="M62 25 L67 30 L62 35" fill="none" stroke="#ff8566" stroke-width="1.5"/>
+                                <path d="M62 45 L67 50 L62 55" fill="none" stroke="#ff8566" stroke-width="1.5"/>
+                            </g>
+                            
+                            <!-- Graduation cap with gentle bounce -->
+                            <g>
+                                <animateTransform attributeName="transform" attributeType="XML" 
+                                                type="translate" values="0,0; 0,-1; 0,0" 
+                                                dur="3s" repeatCount="indefinite"/>
+                                <path d="M10 15 L25 10 L40 15 L25 20 Z" fill="#ff6b47"/>
+                                <rect x="24" y="15" width="2" height="8" fill="#ff6b47"/>
+                                <circle cx="25" cy="23" r="2" fill="#ff4422">
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                            </g>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Security Training</h3>
+                    <p class="service-description">
+                        Comprehensive cybersecurity awareness programs and technical training to strengthen your human firewall.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section" id="about">
+            <h2 class="section-title">[ABOUT_COMMRADES]</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Founded by veteran cybersecurity professionals, Commrades stands at the forefront of information security, 
+                        protecting organizations against Advanced Pesistent Threats. Our team combines industry-leading security 
+                        expertise with cutting-edge technology to deliver uncompromising protection.
+                    </p>
+                    <br>
+                    <p>
+                        We believe that true security comes from understanding the adversary. Our red team approach, combined 
+                        with defensive excellence, ensures comprehensive protection that evolves with the threat landscape.
+                    </p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">Clients Protected</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">99.9%</span>
+                        <span class="stat-label">Uptime Achieved</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Monitoring</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">< 15min</span>
+                        <span class="stat-label">Response Time</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="section">
+            <h2 class="section-title">[WHY_COMMRADES]</h2>
+            <h3 style="color: #ff8566; font-size: 1.5em; margin-bottom: 20px; text-align: center;">ELITE PROTECTION FOR CRITICAL ASSETS</h3>
+            <ul class="features-list">
+                <li><strong>Battle-Tested Expertise:</strong> Our team consists of former military cybersecurity specialists and certified ethical hackers with real-world experience.</li>
+                <li><strong>Zero-Trust Philosophy:</strong> We implement comprehensive zero-trust architectures that assume breach and verify everything.</li>
+                <li><strong>Threat-Informed Defense:</strong> Our strategies are built on real threat intelligence gathered from global adversaries and attack patterns.</li>
+                <li><strong>Continuous Innovation:</strong> We stay ahead of threats through constant research, development, and collaboration with the global security community.</li>
+                <li><strong>Regulatory Excellence:</strong> Deep expertise in compliance frameworks ensuring your organization meets all security standards.</li>
+            </ul>
+        </section>
+
+        <!-- Team Section -->
+        <section class="section" id="team">
+            <h2 class="section-title">[ELITE_TEAM]</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">LF</div>
+                    <h3 class="member-name">Leland Flynn</h3>
+                    <p class="member-role">Chief Executive Officer</p>
+                    <p class="member-description">
+                        Ethical Hacker and former US Army cybersecurity specialist with 20+ years in information security and incident response.
+                    </p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-avatar">VV</div>
+                    <h3 class="member-name">Victor Vaughn</h3>
+                    <p class="member-role">Lead Penetration Tester</p>
+                    <p class="member-description">
+                        Ethical Hacker and CPTS holder specializing in red team operations and advanced exploitation techniques.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section" id="contact">
+            <h2 class="section-title">[SECURE_CONTACT]</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 style="color: #ff8566; margin-bottom: 25px; font-size: 1.4em;">Get In Touch</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Email envelope -->
+                                <rect x="2" y="6" width="20" height="12" rx="2" fill="none" stroke="#ff8566" stroke-width="1.5"/>
+                                
+                                <!-- Email content lines -->
+                                <rect x="4" y="8" width="16" height="8" rx="1" fill="rgba(255, 133, 102, 0.1)"/>
+                                
+                                <!-- Envelope flap with animation -->
+                                <path d="M2 6 L12 13 L22 6" fill="none" stroke="#ff6b47" stroke-width="1.5">
+                                    <animate attributeName="stroke" values="#ff6b47;#ff4422;#ff6b47" dur="2s" repeatCount="indefinite"/>
+                                </path>
+                                
+                                <!-- Security lock overlay -->
+                                <circle cx="18" cy="10" r="3" fill="rgba(26, 26, 26, 0.8)" stroke="#ff4422" stroke-width="1"/>
+                                <rect x="16.5" y="11" width="3" height="2" rx="0.5" fill="#ff4422"/>
+                                <path d="M17 11 L17 9.5 Q17 8.5 18 8.5 Q19 8.5 19 9.5 L19 11" 
+                                      fill="none" stroke="#ff4422" stroke-width="0.8"/>
+                                
+                                <!-- Data transmission particles -->
+                                <circle cx="6" cy="10" r="0.5" fill="#ff4422">
+                                    <animate attributeName="cx" values="6;18;6" dur="3s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="8" cy="12" r="0.5" fill="#ff8566">
+                                    <animate attributeName="cx" values="8;16;8" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0;1;0" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                        </div>
+                        <span>info@commrades.tech</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Phone base -->
+                                <path d="M22 16.92V19.92C22 20.5 21.5 21 20.92 21H20.8C10.8 21 3 13.2 3 3.2V3.08C3 2.5 3.5 2 4.08 2H7.08C7.6 2 8.08 2.4 8.12 2.92L8.8 7.5C8.84 7.9 8.7 8.3 8.4 8.6L6.9 10.1C8.5 13.4 10.6 15.5 13.9 17.1L15.4 15.6C15.7 15.3 16.1 15.16 16.5 15.2L21.08 15.88C21.6 15.92 22 16.4 22 16.92Z" 
+                                      fill="none" stroke="#ff8566" stroke-width="1.5"/>
+                                
+                                <!-- Signal waves with animation -->
+                                <path d="M15 7C16.5 7 18 8.5 18 10" fill="none" stroke="#ff4422" stroke-width="1">
+                                    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+                                </path>
+                                <path d="M14 4C17.3 4 20 6.7 20 10" fill="none" stroke="#ff4422" stroke-width="1">
+                                    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                                </path>
+                                <path d="M13 1C18.5 1 23 5.5 23 11" fill="none" stroke="#ff4422" stroke-width="1">
+                                    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" begin="1s" repeatCount="indefinite"/>
+                                </path>
+                                
+                                <!-- Security indicator -->
+                                <circle cx="6" cy="6" r="2" fill="none" stroke="#ff6b47" stroke-width="1">
+                                    <animate attributeName="r" values="2;3;2" dur="2s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="6" cy="6" r="1" fill="#ff4422"/>
+                            </svg>
+                        </div>
+                        <span>+1 555.555.5555</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Building structure -->
+                                <rect x="4" y="8" width="16" height="12" rx="1" fill="none" stroke="#ff8566" stroke-width="1.5"/>
+                                <rect x="6" y="4" width="12" height="4" rx="0.5" fill="none" stroke="#ff6b47" stroke-width="1"/>
+                                
+                                <!-- Windows with security grid -->
+                                <rect x="6" y="10" width="2" height="2" fill="rgba(255, 133, 102, 0.3)" stroke="#ff8566" stroke-width="0.5"/>
+                                <rect x="9" y="10" width="2" height="2" fill="rgba(255, 133, 102, 0.3)" stroke="#ff8566" stroke-width="0.5"/>
+                                <rect x="13" y="10" width="2" height="2" fill="rgba(255, 133, 102, 0.3)" stroke="#ff8566" stroke-width="0.5"/>
+                                <rect x="16" y="10" width="2" height="2" fill="rgba(255, 133, 102, 0.3)" stroke="#ff8566" stroke-width="0.5"/>
+                                
+                                <rect x="6" y="13" width="2" height="2" fill="rgba(255, 133, 102, 0.3)" stroke="#ff8566" stroke-width="0.5"/>
+                                <rect x="9" y="13" width="2" height="2" fill="rgba(255, 133, 102, 0.3)" stroke="#ff8566" stroke-width="0.5"/>
+                                <rect x="13" y="13" width="2" height="2" fill="rgba(255, 133, 102, 0.3)" stroke="#ff8566" stroke-width="0.5"/>
+                                <rect x="16" y="13" width="2" height="2" fill="rgba(255, 133, 102, 0.3)" stroke="#ff8566" stroke-width="0.5"/>
+                                
+                                <!-- Secure entrance -->
+                                <rect x="10" y="16" width="4" height="4" fill="none" stroke="#ff6b47" stroke-width="1.5"/>
+                                <circle cx="12" cy="18" r="0.5" fill="#ff4422">
+                                    <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/>
+                                </circle>
+                                
+                                <!-- Security perimeter -->
+                                <circle cx="12" cy="12" r="10" fill="none" stroke="#ff4422" stroke-width="0.5" opacity="0.3">
+                                    <animate attributeName="r" values="10;12;10" dur="4s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.3;0.1;0.3" dur="4s" repeatCount="indefinite"/>
+                                </circle>
+                                
+                                <!-- Location pin -->
+                                <circle cx="12" cy="2" r="1.5" fill="#ff4422">
+                                    <animate attributeName="cy" values="2;1;2" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                        </div>
+                        <span>1337 Cyber Street, Security City, SC 90210</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Emergency alert base -->
+                                <circle cx="12" cy="12" r="10" fill="none" stroke="#ff4422" stroke-width="2">
+                                    <animate attributeName="stroke-width" values="2;3;2" dur="1s" repeatCount="indefinite"/>
+                                </circle>
+                                
+                                <!-- Warning triangle -->
+                                <path d="M12 6 L16 14 L8 14 Z" fill="none" stroke="#ff6b47" stroke-width="1.5"/>
+                                <line x1="12" y1="9" x2="12" y2="12" stroke="#ff4422" stroke-width="1.5">
+                                    <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
+                                </line>
+                                <circle cx="12" cy="13.5" r="0.5" fill="#ff4422">
+                                    <animate attributeName="opacity" values="1;0.3;1" dur="1s" begin="0.5s" repeatCount="indefinite"/>
+                                </circle>
+                                
+                                <!-- Emergency pulse rings -->
+                                <circle cx="12" cy="12" r="8" fill="none" stroke="#ff4422" stroke-width="1" opacity="0.5">
+                                    <animate attributeName="r" values="8;15;8" dur="2s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="12" cy="12" r="6" fill="none" stroke="#ff8566" stroke-width="1" opacity="0.4">
+                                    <animate attributeName="r" values="6;13;6" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                                </circle>
+                                
+                                <!-- Emergency flash -->
+                                <circle cx="12" cy="12" r="3" fill="#ff4422" opacity="0.3">
+                                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="0.5s" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                        </div>
+                        <span>24/7 Emergency: +1 (555) BREACH-0</span>
+                    </div>
+                    
+                    <div style="margin-top: 30px; padding: 20px; background: rgba(255, 107, 71, 0.1); border-radius: 10px; border: 1px solid #ff6b47;">
+                        <h4 style="color: #ff8566; margin-bottom: 10px;">Security Notice</h4>
+                        <p style="color: #cccccc; font-size: 0.9em;">
+                            All communications are encrypted end-to-end. For sensitive information, 
+                            please use our secure portal or encrypted email.
+                        </p>
+                    </div>
+                </div>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Service Interest</label>
+                        <select id="service" name="service" style="width: 100%; padding: 12px; background: rgba(255, 107, 71, 0.1); border: 1px solid #ff6b47; border-radius: 6px; color: #cccccc; font-family: inherit;">
+                            <option value="">Select a service</option>
+                            <option value="penetration-testing">Penetration Testing</option>
+                            <option value="threat-intelligence">Threat Intelligence</option>
+                            <option value="compliance">Compliance & GRC</option>
+                            <option value="incident-response">Incident Response</option>
+                            <option value="security-architecture">Security Architecture</option>
+                            <option value="training">Security Training</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Secure Message</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#team">Team</a>
+                <a href="#contact">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Security Portal</a>
+            </div>
+            <p>&copy; 2025 Commrades InfoSec. All rights reserved.</p>
+            <p style="font-size: 0.9em; opacity: 0.8; margin-top: 10px;">
+                Protecting your today. Securing our tomorrow.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Matrix rain effect
+        function createMatrixRain() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '-1';
+            canvas.style.opacity = '0.15';
+            
+            document.body.appendChild(canvas);
+            
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            
+            const characters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+            const fontSize = 14;
+            let columns = Math.floor(canvas.width / fontSize);
+            let drops = [];
+            
+            // Initialize drops
+            for (let i = 0; i < columns; i++) {
+                drops[i] = Math.random() * -100;
+            }
+            
+            function draw() {
+                // Semi-transparent black background for fading effect
+                ctx.fillStyle = 'rgba(26, 26, 26, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = '#ff6b47';
+                ctx.font = fontSize + 'px monospace';
+                
+                // Update columns count if window resized
+                const newColumns = Math.floor(canvas.width / fontSize);
+                if (newColumns !== columns) {
+                    columns = newColumns;
+                    drops = [];
+                    for (let i = 0; i < columns; i++) {
+                        drops[i] = Math.random() * -100;
+                    }
+                }
+                
+                for (let i = 0; i < drops.length; i++) {
+                    const text = characters[Math.floor(Math.random() * characters.length)];
+                    const x = i * fontSize;
+                    const y = drops[i] * fontSize;
+                    
+                    ctx.fillText(text, x, y);
+                    
+                    // Reset drop to top when it reaches bottom or randomly
+                    if (y > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+            
+            setInterval(draw, 35);
+        }
+        
+        createMatrixRain();
+        
+        // Enhanced typing effect with comprehensive system detection
+        async function typeWriter() {
+            const prompt = document.querySelector('.terminal-prompt');
+            let visitorIP = 'UNKNOWN';
+            let locationInfo = 'Location Unknown';
+            
+            // Get visitor's IP and location
+            try {
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                visitorIP = ipData.ip;
+                
+                // Get geolocation data
+                const geoResponse = await fetch(`https://ipapi.co/${ipData.ip}/json/`);
+                const geoData = await geoResponse.json();
+                
+                if (geoData.city && geoData.region) {
+                    locationInfo = `${geoData.city}, ${geoData.region}`;
+                    if (geoData.country_name) {
+                        locationInfo += `, ${geoData.country_name}`;
+                    }
+                }
+            } catch (error) {
+                console.log('Could not fetch IP/location data');
+            }
+            
+            // Detect browser and OS
+            const userAgent = navigator.userAgent;
+            let browserInfo = 'Unknown Browser';
+            let osInfo = 'Unknown OS';
+            
+            // Browser detection
+            if (userAgent.includes('Chrome') && !userAgent.includes('Edg')) {
+                const version = userAgent.match(/Chrome\/([0-9.]+)/);
+                browserInfo = `Chrome ${version ? version[1] : 'Unknown Version'}`;
+            } else if (userAgent.includes('Firefox')) {
+                const version = userAgent.match(/Firefox\/([0-9.]+)/);
+                browserInfo = `Firefox ${version ? version[1] : 'Unknown Version'}`;
+            } else if (userAgent.includes('Safari') && !userAgent.includes('Chrome')) {
+                const version = userAgent.match(/Version\/([0-9.]+)/);
+                browserInfo = `Safari ${version ? version[1] : 'Unknown Version'}`;
+            } else if (userAgent.includes('Edg')) {
+                const version = userAgent.match(/Edg\/([0-9.]+)/);
+                browserInfo = `Edge ${version ? version[1] : 'Unknown Version'}`;
+            }
+            
+            // OS detection
+            if (userAgent.includes('Windows NT 10.0')) {
+                osInfo = 'Windows 10/11';
+            } else if (userAgent.includes('Windows NT 6.3')) {
+                osInfo = 'Windows 8.1';
+            } else if (userAgent.includes('Windows NT 6.1')) {
+                osInfo = 'Windows 7';
+            } else if (userAgent.includes('Mac OS X')) {
+                const version = userAgent.match(/Mac OS X ([0-9_]+)/);
+                osInfo = `macOS ${version ? version[1].replace(/_/g, '.') : 'Unknown Version'}`;
+            } else if (userAgent.includes('X11') || userAgent.includes('Linux')) {
+                osInfo = 'Linux';
+            } else if (userAgent.includes('Android')) {
+                const version = userAgent.match(/Android ([0-9.]+)/);
+                osInfo = `Android ${version ? version[1] : 'Unknown Version'}`;
+            } else if (userAgent.includes('iPhone') || userAgent.includes('iPad')) {
+                const version = userAgent.match(/OS ([0-9_]+)/);
+                osInfo = `iOS ${version ? version[1].replace(/_/g, '.') : 'Unknown Version'}`;
+            }
+            
+            // Get timezone
+            const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            const now = new Date();
+            const offset = now.getTimezoneOffset();
+            const offsetHours = Math.floor(Math.abs(offset) / 60);
+            const offsetMinutes = Math.abs(offset) % 60;
+            const offsetSign = offset <= 0 ? '+' : '-';
+            const timeZoneInfo = `${timeZone} (UTC${offsetSign}${offsetHours}:${offsetMinutes.toString().padStart(2, '0')})`;
+            
+            const scanLines = [
+                'root@commrades:~$ initialize_security_protocol',
+                `Target IP: ${visitorIP} - Connection secured`,
+                'Scanning target system...',
+                `├── OS: ${osInfo}`,
+                `├── Browser: ${browserInfo}`,
+                `├── Location: ${locationInfo}`,
+                `├── Timezone: ${timeZoneInfo}`,
+                '└── Security Assessment: ACTIVE'
+            ];
+            
+            let currentLine = 0;
+            let currentChar = 0;
+            
+            prompt.innerHTML = '';
+            
+            function type() {
+                if (currentLine < scanLines.length) {
+                    if (currentChar < scanLines[currentLine].length) {
+                        prompt.innerHTML += scanLines[currentLine].charAt(currentChar);
+                        currentChar++;
+                        setTimeout(type, currentLine === 0 ? 50 : 30); // Slower for first line
+                    } else {
+                        // End of current line
+                        prompt.innerHTML += '<br>';
+                        currentLine++;
+                        currentChar = 0;
+                        // Add pause between lines for realistic terminal feel
+                        setTimeout(type, currentLine === 2 ? 800 : 200); // Longer pause before "Scanning..."
+                    }
+                } else {
+                    prompt.innerHTML += '<span class="cursor">_</span>';
+                }
+            }
+            
+            type();
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Form submission handler
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Encrypting & Sending...';
+            submitBtn.style.background = 'rgba(255, 107, 71, 0.3)';
+            
+            setTimeout(() => {
+                submitBtn.textContent = 'Message Sent Securely!';
+                submitBtn.style.background = 'rgba(0, 255, 0, 0.2)';
+                submitBtn.style.borderColor = '#00ff00';
+                
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = '';
+                    submitBtn.style.borderColor = '';
+                    this.reset();
+                }, 3000);
+            }, 2000);
+        });
+        
+        // Start typing effect when page loads
+        window.addEventListener('load', typeWriter);
+        
+        // Add navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(26, 26, 26, 0.98)';
+            } else {
+                nav.style.background = 'rgba(26, 26, 26, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
