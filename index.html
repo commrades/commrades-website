@@ -61,6 +61,7 @@
             display: flex;
             list-style: none;
             gap: 30px;
+            align-items: center;
         }
 
         .nav-links a {
@@ -75,6 +76,34 @@
             color: #ff6b47;
             background: rgba(255, 107, 71, 0.1);
             box-shadow: 0 0 10px rgba(255, 107, 71, 0.3);
+        }
+
+        .call-now-btn {
+            background: rgba(255, 107, 71, 0.1);
+            color: #ff8566;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #ff6b47;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(255, 107, 71, 0.2);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .call-now-btn:hover {
+            background: rgba(255, 107, 71, 0.2);
+            border-color: #ff8566;
+            box-shadow: 0 4px 20px rgba(255, 107, 71, 0.4);
+            transform: translateY(-2px);
+            color: #ff6b47;
+        }
+
+        .phone-icon {
+            width: 16px;
+            height: 16px;
         }
 
         /* Header */
@@ -346,9 +375,8 @@
 
         /* Contact Section */
         .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            display: flex;
+            justify-content: center;
             margin-top: 30px;
         }
 
@@ -357,6 +385,8 @@
             padding: 30px;
             border-radius: 15px;
             border: 2px solid #ff6b47;
+            max-width: 600px;
+            width: 100%;
         }
 
         .contact-item {
@@ -378,6 +408,10 @@
             width: 24px;
             height: 24px;
             filter: drop-shadow(0 0 5px rgba(255, 133, 102, 0.5));
+        }
+
+        .contact-item a:hover {
+            color: #ff6b47 !important;
         }
 
         .contact-form {
@@ -519,6 +553,31 @@
             .section {
                 padding: 20px;
             }
+            
+            /* Show mobile call button */
+            .mobile-call-btn {
+                display: block;
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: rgba(255, 107, 71, 0.9);
+                color: white;
+                padding: 15px;
+                border-radius: 50%;
+                box-shadow: 0 4px 20px rgba(255, 107, 71, 0.4);
+                z-index: 1000;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+            
+            .mobile-call-btn:hover {
+                background: rgba(255, 107, 71, 1);
+                transform: scale(1.1);
+            }
+        }
+        
+        .mobile-call-btn {
+            display: none;
         }
     </style>
 </head>
@@ -535,6 +594,15 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#team">Team</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li>
+                    <a href="tel:4694852585" class="call-now-btn">
+                        <svg class="phone-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 16.92V19.92C22 20.5 21.5 21 20.92 21H20.8C10.8 21 3 13.2 3 3.2V3.08C3 2.5 3.5 2 4.08 2H7.08C7.6 2 8.08 2.4 8.12 2.92L8.8 7.5C8.84 7.9 8.7 8.3 8.4 8.6L6.9 10.1C8.5 13.4 10.6 15.5 13.9 17.1L15.4 15.6C15.7 15.3 16.1 15.16 16.5 15.2L21.08 15.88C21.6 15.92 22 16.4 22 16.92Z" 
+                                  fill="currentColor"/>
+                        </svg>
+                        469.485.2585
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -1148,7 +1216,7 @@
                 <div class="about-text">
                     <p>
                         Founded by veteran cybersecurity professionals, Commrades stands at the forefront of information security, 
-                        protecting organizations against Advanced Pesistent Threats. Our team combines industry-leading security 
+                        protecting organizations against Advanced Persistent Threats. Our team combines industry-leading security 
                         expertise with cutting-edge technology to deliver uncompromising protection.
                     </p>
                     <br>
@@ -1183,10 +1251,10 @@
             <h2 class="section-title">[WHY_COMMRADES]</h2>
             <h3 style="color: #ff8566; font-size: 1.5em; margin-bottom: 20px; text-align: center;">ELITE PROTECTION FOR CRITICAL ASSETS</h3>
             <ul class="features-list">
-                <li><strong>Battle-Tested Expertise:</strong> Our team consists of former military cybersecurity specialists and certified ethical hackers with real-world experience.</li>
+                <li><strong>Battle-Tested Expertise:</strong> Our team consists of former military cybersecurity specialists and certified ethical hackers with real-world combat experience.</li>
                 <li><strong>Zero-Trust Philosophy:</strong> We implement comprehensive zero-trust architectures that assume breach and verify everything.</li>
                 <li><strong>Threat-Informed Defense:</strong> Our strategies are built on real threat intelligence gathered from global adversaries and attack patterns.</li>
-                <li><strong>Continuous Innovation:</strong> We stay ahead of threats through constant research, development, and collaboration with the global security community.</li>
+                <li><strong>Continuous Innovation:</strong> We stay ahead of threats through constant research, development, and collaboration with security communities.</li>
                 <li><strong>Regulatory Excellence:</strong> Deep expertise in compliance frameworks ensuring your organization meets all security standards.</li>
             </ul>
         </section>
@@ -1253,7 +1321,7 @@
                                 </circle>
                             </svg>
                         </div>
-                        <span>info@commrades.tech</span>
+                        <a href="mailto:info@commrades.tech" style="color: #cccccc; text-decoration: none; transition: color 0.3s ease;">info@commrades.tech</a>
                     </div>
                     
                     <div class="contact-item">
@@ -1282,16 +1350,9 @@
                                 <circle cx="6" cy="6" r="1" fill="#ff4422"/>
                             </svg>
                         </div>
-                        <span>+1 469.485.2585</span>
+                        <a href="tel:4694852585" style="color: #cccccc; text-decoration: none; transition: color 0.3s ease;">469.485.2585</a>
                     </div>
-                                                    
-                                <!-- Emergency flash -->
-                                <circle cx="12" cy="12" r="3" fill="#ff4422" opacity="0.3">
-                                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="0.5s" repeatCount="indefinite"/>
-                                </circle>
-                            </svg>
-                        </div>
-                        <span>24/7 Emergency: +1 469.485.2585</span>
+                    
                     <div class="contact-item">
                         <div class="contact-icon">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1331,79 +1392,14 @@
                         <span>1337 Cyber Street, Security City, SC 90210</span>
                     </div>
                     
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <!-- Emergency alert base -->
-                                <circle cx="12" cy="12" r="10" fill="none" stroke="#ff4422" stroke-width="2">
-                                    <animate attributeName="stroke-width" values="2;3;2" dur="1s" repeatCount="indefinite"/>
-                                </circle>
-                                
-                                <!-- Warning triangle -->
-                                <path d="M12 6 L16 14 L8 14 Z" fill="none" stroke="#ff6b47" stroke-width="1.5"/>
-                                <line x1="12" y1="9" x2="12" y2="12" stroke="#ff4422" stroke-width="1.5">
-                                    <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
-                                </line>
-                                <circle cx="12" cy="13.5" r="0.5" fill="#ff4422">
-                                    <animate attributeName="opacity" values="1;0.3;1" dur="1s" begin="0.5s" repeatCount="indefinite"/>
-                                </circle>
-                                
-                                <!-- Emergency pulse rings -->
-                                <circle cx="12" cy="12" r="8" fill="none" stroke="#ff4422" stroke-width="1" opacity="0.5">
-                                    <animate attributeName="r" values="8;15;8" dur="2s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite"/>
-                                </circle>
-                                <circle cx="12" cy="12" r="6" fill="none" stroke="#ff8566" stroke-width="1" opacity="0.4">
-                                    <animate attributeName="r" values="6;13;6" dur="2s" begin="0.5s" repeatCount="indefinite"/>
-                                    <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" begin="0.5s" repeatCount="indefinite"/>
-                                </circle>
-                    </div>
-                    
                     <div style="margin-top: 30px; padding: 20px; background: rgba(255, 107, 71, 0.1); border-radius: 10px; border: 1px solid #ff6b47;">
                         <h4 style="color: #ff8566; margin-bottom: 10px;">Security Notice</h4>
                         <p style="color: #cccccc; font-size: 0.9em;">
                             All communications are encrypted end-to-end. For sensitive information, 
-                            please use our secure portal or encrypted email.
+                            please use our secure portal or PGP-encrypted email.
                         </p>
                     </div>
                 </div>
-                
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="company">Company</label>
-                        <input type="text" id="company" name="company">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="service">Service Interest</label>
-                        <select id="service" name="service" style="width: 100%; padding: 12px; background: rgba(255, 107, 71, 0.1); border: 1px solid #ff6b47; border-radius: 6px; color: #cccccc; font-family: inherit;">
-                            <option value="">Select a service</option>
-                            <option value="penetration-testing">Penetration Testing</option>
-                            <option value="threat-intelligence">Threat Intelligence</option>
-                            <option value="compliance">Compliance & GRC</option>
-                            <option value="incident-response">Incident Response</option>
-                            <option value="security-architecture">Security Architecture</option>
-                            <option value="training">Security Training</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="4" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Send Secure Message</button>
-                </form>
             </div>
         </section>
     </div>
@@ -1420,12 +1416,20 @@
                 <a href="#">Terms of Service</a>
                 <a href="#">Security Portal</a>
             </div>
-            <p>&copy; 2025 Commrades InfoSec. All rights reserved.</p>
+            <p>&copy; 2025 Commrades Information Security. All rights reserved.</p>
             <p style="font-size: 0.9em; opacity: 0.8; margin-top: 10px;">
-                Protecting your today. Securing our tomorrow.
+                Protecting <em style="color: #ff4422; font-style: italic;">your</em> today. Securing <em style="color: #ff4422; font-style: italic;">our</em> tomorrow.
             </p>
         </div>
     </footer>
+
+    <!-- Mobile Call Button (hidden on desktop) -->
+    <a href="tel:4694852585" class="mobile-call-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 16.92V19.92C22 20.5 21.5 21 20.92 21H20.8C10.8 21 3 13.2 3 3.2V3.08C3 2.5 3.5 2 4.08 2H7.08C7.6 2 8.08 2.4 8.12 2.92L8.8 7.5C8.84 7.9 8.7 8.3 8.4 8.6L6.9 10.1C8.5 13.4 10.6 15.5 13.9 17.1L15.4 15.6C15.7 15.3 16.1 15.16 16.5 15.2L21.08 15.88C21.6 15.92 22 16.4 22 16.92Z" 
+                  fill="currentColor"/>
+        </svg>
+    </a>
 
     <script>
         // Matrix rain effect
@@ -1624,31 +1628,6 @@
                     });
                 }
             });
-        });
-        
-        // Form submission handler
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simulate form submission
-            const submitBtn = this.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.textContent = 'Encrypting & Sending...';
-            submitBtn.style.background = 'rgba(255, 107, 71, 0.3)';
-            
-            setTimeout(() => {
-                submitBtn.textContent = 'Message Sent Securely!';
-                submitBtn.style.background = 'rgba(0, 255, 0, 0.2)';
-                submitBtn.style.borderColor = '#00ff00';
-                
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.style.background = '';
-                    submitBtn.style.borderColor = '';
-                    this.reset();
-                }, 3000);
-            }, 2000);
         });
         
         // Start typing effect when page loads
