@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commrades - Information Security Solutions</title>
+    <title>Commrades - Information Security Consulting | DFW &amp; Nationwide</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -282,7 +282,7 @@
         }
 
         .stat-number {
-            font-size: 2.5em;
+            font-size: 2em;
             color: #ff8566;
             font-weight: bold;
             display: block;
@@ -320,57 +320,55 @@
             font-size: 1.2em;
         }
 
-        /* Team Section */
-        .team-grid {
+        /* Industries Section */
+        .industries-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
         }
 
-        .team-member {
-            background: rgba(0, 0, 0, 0.5);
+        .industry-item {
+            background: rgba(255, 107, 71, 0.05);
             border: 2px solid #cc3319;
-            border-radius: 15px;
-            padding: 30px;
+            border-radius: 10px;
+            padding: 20px;
             text-align: center;
             transition: all 0.3s ease;
         }
 
-        .team-member:hover {
+        .industry-item:hover {
             border-color: #ff6b47;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 107, 71, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(255, 107, 71, 0.3);
         }
 
-        .member-avatar {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #ff6b47, #cc3319);
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2em;
-            color: white;
-        }
-
-        .member-name {
-            font-size: 1.3em;
-            color: #ff8566;
+        .industry-icon {
+            display: block;
             margin-bottom: 10px;
         }
 
-        .member-role {
-            color: #cc3319;
-            font-weight: bold;
-            margin-bottom: 15px;
+        .industry-icon svg {
+            display: inline-block;
+            filter: drop-shadow(0 0 5px rgba(255, 107, 71, 0.3));
         }
 
-        .member-description {
+        .industry-name {
             color: #cccccc;
-            line-height: 1.6;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Secondary Services */
+        .services-secondary .service-card {
+            border-color: #662211;
+            opacity: 0.85;
+        }
+
+        .services-secondary .service-card:hover {
+            border-color: #cc3319;
+            opacity: 1;
         }
 
         /* Contact Section */
@@ -412,60 +410,6 @@
 
         .contact-item a:hover {
             color: #ff6b47 !important;
-        }
-
-        .contact-form {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 30px;
-            border-radius: 15px;
-            border: 2px solid #cc3319;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            color: #ff8566;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            background: rgba(255, 107, 71, 0.1);
-            border: 1px solid #ff6b47;
-            border-radius: 6px;
-            color: #cccccc;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #ff8566;
-            box-shadow: 0 0 10px rgba(255, 107, 71, 0.3);
-        }
-
-        .submit-btn {
-            background: rgba(255, 107, 71, 0.1);
-            color: #ff8566;
-            border: 2px solid #ff6b47;
-            padding: 12px 30px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 1em;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            background: rgba(255, 107, 71, 0.2);
-            border-color: #ff8566;
-            box-shadow: 0 5px 20px rgba(255, 107, 71, 0.4);
         }
 
         /* Footer */
@@ -545,7 +489,11 @@
             .stats-grid {
                 grid-template-columns: 1fr;
             }
-            
+
+            .industries-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .container {
                 padding: 10px;
             }
@@ -592,7 +540,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#team">Team</a></li>
+                <li><a href="#industries">Industries</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
                     <a href="tel:4694852585" class="call-now-btn">
@@ -614,15 +562,15 @@
             </div>
             <h1 class="company-title">COMMRADES InfoSec</h1>
             <p class="company-tagline">Protecting <em style="color: #ff4422; font-style: italic;">your</em> today. Securing <em style="color: #ff4422; font-style: italic;">our</em> tomorrow.</p>
-            <a href="mailto:info@commrades.tech?subject=Free%20Security%20Evaluation%20Request&body=Hello%20Commrades%2C%0A%0AI%20would%20like%20to%20request%20a%20free%20security%20evaluation%20for%20my%20organization.%0A%0ACompany%20Name%3A%20%0AIndustry%3A%20%0ANumber%20of%20Employees%3A%20%0AContact%20Person%3A%20%0APhone%3A%20%0A%0APlease%20contact%20me%20to%20schedule%20our%20evaluation.%0A%0AThank%20you%21" class="cta-button">
-                Secure Your Infrastructure<br>
-                <span style="font-size: 0.8em; font-weight: normal; opacity: 0.9;">Email today for a free security evaluation</span>
+            <a href="https://calendly.com/commrades" target="_blank" rel="noopener noreferrer" class="cta-button">
+                Book a Free Consultation<br>
+                <span style="font-size: 0.8em; font-weight: normal; opacity: 0.9;">30 minutes &mdash; no commitment, no sales pitch</span>
             </a>
         </header>
 
         <!-- Services Section -->
         <section class="section" id="services">
-            <h2 class="section-title">[SECURITY_SERVICES]</h2>
+            <h2 class="section-title">[CORE_SERVICES]</h2>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
@@ -633,10 +581,68 @@
                     </div>
                     <h3 class="service-title">Virtual CISO (vCISO)</h3>
                     <p class="service-description">
-                        Executive-level cybersecurity leadership and strategic guidance without the full-time cost. Our seasoned CISOs provide governance, risk management, and security program oversight.
+                        Executive-level cybersecurity leadership without the full-time cost. I provide governance, risk management, security program development, and board-level reporting — acting as your dedicated security executive on a fractional basis.
                     </p>
                 </div>
-                
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Penetration Testing</h3>
+                    <p class="service-description">
+                        I find your vulnerabilities before attackers do. Comprehensive network, web application, and infrastructure assessments using real-world offensive techniques — with clear, actionable reporting.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/>
+                            <path d="M14 2v5a1 1 0 0 0 1 1h5"/>
+                            <path d="m9 15 2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Compliance & GRC</h3>
+                    <p class="service-description">
+                        Navigate complex regulatory requirements with confidence. I help organizations achieve and maintain compliance with NIST, ISO 27001, SOC 2, HIPAA, CMMC, and other frameworks.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/>
+                            <path d="M22 10v6"/>
+                            <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Security Training</h3>
+                    <p class="service-description">
+                        Hands-on cybersecurity awareness programs and technical training tailored to your organization. From executive briefings to phishing simulations, I help strengthen your human firewall.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="section-subtitle" style="color: #ff8566; font-size: 1.3em; margin-top: 50px; margin-bottom: 25px; text-align: center; text-transform: uppercase; letter-spacing: 2px; opacity: 0.9;">Also Available</h3>
+            <div class="services-grid services-secondary">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+                            <path d="M12 8v4"/>
+                            <path d="M12 16h.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Incident Response Consulting</h3>
+                    <p class="service-description">
+                        When a breach happens, I help you contain, investigate, and remediate — fast. Includes preparation planning, tabletop exercises, and post-incident analysis.
+                    </p>
+                </div>
+
                 <div class="service-card">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -648,67 +654,12 @@
                             <path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"/>
                         </svg>
                     </div>
-                    <h3 class="service-title">Continuous Threat Exposure Management</h3>
+                    <h3 class="service-title">Threat Exposure Management</h3>
                     <p class="service-description">
-                        Advanced CTEM framework providing continuous discovery, assessment, and prioritization of threat exposures across your entire attack surface with real-time risk scoring.
+                        Continuous discovery and prioritization of threat exposures across your attack surface — typically delivered as part of vCISO or ongoing consulting engagements.
                     </p>
                 </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Penetration Testing</h3>
-                    <p class="service-description">
-                        Comprehensive security assessments using advanced ethical hacking techniques to identify vulnerabilities before malicious actors do.
-                    </p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect width="20" height="14" x="2" y="3" rx="2"/>
-                            <line x1="8" x2="16" y1="21" y2="21"/>
-                            <line x1="12" x2="12" y1="17" y2="21"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Threat Intelligence</h3>
-                    <p class="service-description">
-                        Real-time threat monitoring and analysis to keep your organization ahead of emerging cyber threats and attack vectors.
-                    </p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/>
-                            <path d="M14 2v5a1 1 0 0 0 1 1h5"/>
-                            <path d="m9 15 2 2 4-4"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Compliance & GRC</h3>
-                    <p class="service-description">
-                        Governance, Risk, and Compliance solutions ensuring adherence to industry standards like ISO 27001, NIST, and GDPR.
-                    </p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
-                            <path d="M12 8v4"/>
-                            <path d="M12 16h.01"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Incident Response</h3>
-                    <p class="service-description">
-                        24/7 rapid response team ready to contain, investigate, and remediate security incidents with minimal business impact.
-                    </p>
-                </div>
-                
+
                 <div class="service-card">
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -720,21 +671,7 @@
                     </div>
                     <h3 class="service-title">Security Architecture</h3>
                     <p class="service-description">
-                        Design and implementation of robust security frameworks tailored to your organization's unique infrastructure needs.
-                    </p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/>
-                            <path d="M22 10v6"/>
-                            <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Security Training</h3>
-                    <p class="service-description">
-                        Comprehensive cybersecurity awareness programs and technical training to strengthen your human firewall.
+                        Design and review of security architectures tailored to your infrastructure — from zero-trust networks to cloud security posture.
                     </p>
                 </div>
             </div>
@@ -746,83 +683,135 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        Founded by veteran cybersecurity professionals, Commrades stands at the forefront of information security, 
-                        protecting organizations against Advanced Persistent Threats. Our team combines industry-leading security 
-                        expertise with cutting-edge technology to deliver uncompromising protection.
+                        I'm Leland Flynn — ethical hacker, former US Army cybersecurity specialist, and founder of Commrades.
+                        With 20+ years in information security, I bring hands-on offensive and defensive experience to every engagement.
+                        From penetration testing to building security programs from the ground up, I've helped organizations across
+                        healthcare, finance, government, and manufacturing protect what matters most.
                     </p>
                     <br>
                     <p>
-                        We believe that true security comes from understanding the adversary. Our red team approach, combined 
-                        with defensive excellence, ensures comprehensive protection that evolves with the threat landscape.
+                        True security comes from understanding the adversary. My red team background, combined with
+                        deep defensive expertise, means I approach every engagement the way an attacker would — then build the
+                        defenses to stop them. Based in DFW and working with organizations nationwide.
                     </p>
                 </div>
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <span class="stat-number">200+</span>
-                        <span class="stat-label">Clients Protected</span>
+                        <span class="stat-number">20+</span>
+                        <span class="stat-label">Years Experience</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">99.9%</span>
-                        <span class="stat-label">Uptime Achieved</span>
+                        <span class="stat-number">US Army</span>
+                        <span class="stat-label">Cyber Veteran</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">24/7</span>
-                        <span class="stat-label">Monitoring</span>
+                        <span class="stat-number">4+</span>
+                        <span class="stat-label">Industries Served</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">< 15min</span>
-                        <span class="stat-label">Response Time</span>
+                        <span class="stat-number">DFW</span>
+                        <span class="stat-label">Based / Remote</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Why Choose Us Section -->
+        <!-- Why Work With Me Section -->
         <section class="section">
-            <h2 class="section-title">[WHY_COMMRADES]</h2>
-            <h3 style="color: #ff8566; font-size: 1.5em; margin-bottom: 20px; text-align: center;">ELITE PROTECTION FOR CRITICAL ASSETS</h3>
+            <h2 class="section-title">[WHY_WORK_WITH_ME]</h2>
+            <h3 style="color: #ff8566; font-size: 1.5em; margin-bottom: 20px; text-align: center;">SENIOR EXPERTISE, DIRECT ACCESS</h3>
             <ul class="features-list">
-                <li><strong>Battle-Tested Expertise:</strong> Our team consists of former military cybersecurity specialists and certified ethical hackers with real-world combat experience.</li>
-                <li><strong>Zero-Trust Philosophy:</strong> We implement comprehensive zero-trust architectures that assume breach and verify everything.</li>
-                <li><strong>Threat-Informed Defense:</strong> Our strategies are built on real threat intelligence gathered from global adversaries and attack patterns.</li>
-                <li><strong>Continuous Innovation:</strong> We stay ahead of threats through constant research, development, and collaboration with security communities.</li>
-                <li><strong>Regulatory Excellence:</strong> Deep expertise in compliance frameworks ensuring your organization meets all security standards.</li>
+                <li><strong>Battle-Tested Expertise:</strong> Former US Army cybersecurity specialist and certified ethical hacker with real-world experience on both sides of the keyboard.</li>
+                <li><strong>You Work With Me Directly:</strong> No account managers, no junior analysts. When you hire Commrades, you get 20+ years of hands-on security experience from day one.</li>
+                <li><strong>Threat-Informed Defense:</strong> My strategies are built on real threat intelligence and offensive experience — I know how attackers think because I've operated like one.</li>
+                <li><strong>Regulatory Expertise:</strong> Deep knowledge of compliance frameworks including NIST, ISO 27001, SOC 2, HIPAA, and CMMC — I help you meet standards without the overhead.</li>
+                <li><strong>Flexible Engagement:</strong> From one-time assessments to ongoing vCISO retainers, I structure engagements to fit your needs and budget.</li>
             </ul>
         </section>
 
-        <!-- Team Section -->
-        <section class="section" id="team">
-            <h2 class="section-title">[ELITE_TEAM]</h2>
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-avatar">LF</div>
-                    <h3 class="member-name">Leland Flynn</h3>
-                    <p class="member-role">Chief Executive Officer</p>
-                    <p class="member-description">
-                        Ethical Hacker and former US Army cybersecurity specialist with 20+ years in information security and incident response.
-                    </p>
+        <!-- Industries Section -->
+        <section class="section" id="industries">
+            <h2 class="section-title">[INDUSTRIES_SERVED]</h2>
+            <p style="color: #cccccc; text-align: center; margin-bottom: 30px; font-size: 1.1em; line-height: 1.8;">
+                I've worked with organizations across regulated and high-risk industries, each with unique compliance needs and threat profiles.
+            </p>
+            <div class="industries-grid">
+                <div class="industry-item">
+                    <span class="industry-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+                            <path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z"/>
+                        </svg>
+                    </span>
+                    <span class="industry-name">Healthcare</span>
                 </div>
-                
-                <!--
-                <div class="team-member">
-                    <div class="member-avatar">VV</div>
-                    <h3 class="member-name">Victor Vaughn</h3>
-                    <p class="member-role">Lead Penetration Tester</p>
-                    <p class="member-description">
-                        Ethical Hacker and CPTS holder specializing in red team operations and advanced exploitation techniques.
-                    </p>
+                <div class="industry-item">
+                    <span class="industry-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+                            <line x1="12" x2="12" y1="2" y2="22"/>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </span>
+                    <span class="industry-name">Financial Services</span>
                 </div>
-                -->
+                <div class="industry-item">
+                    <span class="industry-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+                            <path d="M2 20h20"/>
+                            <path d="M5 20V8.2c0-.4.2-.7.5-.9l6-3.6a1 1 0 0 1 1 0l6 3.6c.3.2.5.5.5.9V20"/>
+                            <path d="M9 12h6"/>
+                            <path d="M9 16h6"/>
+                        </svg>
+                    </span>
+                    <span class="industry-name">Government</span>
+                </div>
+                <div class="industry-item">
+                    <span class="industry-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+                            <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+                        </svg>
+                    </span>
+                    <span class="industry-name">Manufacturing</span>
+                </div>
+                <div class="industry-item">
+                    <span class="industry-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+                            <rect width="20" height="14" x="2" y="3" rx="2"/>
+                            <line x1="8" x2="16" y1="21" y2="21"/>
+                            <line x1="12" x2="12" y1="17" y2="21"/>
+                        </svg>
+                    </span>
+                    <span class="industry-name">Technology</span>
+                </div>
+                <div class="industry-item">
+                    <span class="industry-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+                            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                            <line x1="4" x2="4" y1="22" y2="15"/>
+                        </svg>
+                    </span>
+                    <span class="industry-name">Defense</span>
+                </div>
             </div>
         </section>
 
         <!-- Contact Section -->
         <section class="section" id="contact">
-            <h2 class="section-title">[SECURE_CONTACT]</h2>
+            <h2 class="section-title">[GET_IN_TOUCH]</h2>
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h3 style="color: #ff8566; margin-bottom: 25px; font-size: 1.4em;">Get In Touch</h3>
-                    
+                    <h3 style="color: #ff8566; margin-bottom: 10px; font-size: 1.4em;">Ready to Secure Your Business?</h3>
+                    <p style="color: #cccccc; margin-bottom: 25px; line-height: 1.6;">
+                        Book a free 30-minute consultation to discuss your security needs — no commitment, no sales pitch.
+                    </p>
+
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <a href="https://calendly.com/commrades" target="_blank" rel="noopener noreferrer" class="cta-button" style="font-size: 1em;">
+                            Book a Free Consultation
+                        </a>
+                    </div>
+
+                    <p style="color: #666; text-align: center; margin-bottom: 25px; font-size: 0.9em;">or reach out directly</p>
+
                     <div class="contact-item">
                         <div class="contact-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -832,7 +821,7 @@
                         </div>
                         <a href="mailto:info@commrades.tech" style="color: #cccccc; text-decoration: none; transition: color 0.3s ease;">info@commrades.tech</a>
                     </div>
-                    
+
                     <div class="contact-item">
                         <div class="contact-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -842,12 +831,14 @@
                         <a href="tel:4694852585" style="color: #cccccc; text-decoration: none; transition: color 0.3s ease;">469.485.2585</a>
                     </div>
 
-                    <div style="margin-top: 30px; padding: 20px; background: rgba(255, 107, 71, 0.1); border-radius: 10px; border: 1px solid #ff6b47;">
-                        <h4 style="color: #ff8566; margin-bottom: 10px;">Security Notice</h4>
-                        <p style="color: #cccccc; font-size: 0.9em;">
-                            All communications are encrypted end-to-end. For sensitive information, 
-                            please use our secure portal or PGP-encrypted email.
-                        </p>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <span style="color: #cccccc;">DFW Metroplex &amp; Remote Nationwide</span>
                     </div>
                 </div>
             </div>
@@ -860,13 +851,10 @@
             <div class="footer-links">
                 <a href="#services">Services</a>
                 <a href="#about">About</a>
-                <a href="#team">Team</a>
+                <a href="#industries">Industries</a>
                 <a href="#contact">Contact</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Security Portal</a>
             </div>
-            <p>&copy; 2025 Commrades Information Security. All rights reserved.</p>
+            <p>&copy; 2026 Commrades Information Security. All rights reserved.</p>
             <p style="font-size: 0.9em; opacity: 0.8; margin-top: 10px;">
                 Protecting <em style="color: #ff4422; font-style: italic;">your</em> today. Securing <em style="color: #ff4422; font-style: italic;">our</em> tomorrow.
             </p>
